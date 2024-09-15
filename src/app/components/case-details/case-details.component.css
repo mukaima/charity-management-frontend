@@ -1,0 +1,101 @@
+.case-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background for the whole container */
+  }
+  
+  .case-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd; /* Border around the content */
+    border-radius: 8px;
+    background-color: #fff; /* White background for the content */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for better separation */
+  }
+  
+  .case-photo {
+    flex: 1;
+    margin-right: 20px;
+    display: flex;
+    align-items: center; /* Center photo vertically */
+    justify-content: center; /* Center photo horizontally */
+    padding: 10px; /* Padding around the photo */
+    border-right: 1px solid #ddd; /* Border between photo and details */
+  }
+  
+  .case-photo img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .case-details {
+    flex: 2;
+    padding: 20px; /* Padding inside the details section */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+  }
+  
+  .case-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .case-description {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    flex: 1; /* Allow the description to take more space */
+  }
+  
+  .case-goal, .case-amount-raised {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .case-goal span, .case-amount-raised span {
+    color: #333;
+  }
+  
+  .case-actions {
+    width: 80%; /* Shrink width to make it narrower */
+    max-width: 1000px; /* Max width to ensure it doesn't get too wide */
+    height: auto; /* Set to auto to adjust based on content */
+    padding: 20px; /* Padding inside the actions section */
+    background-color: #fff; /* Background color for actions */
+    border: 1px solid #ddd; /* Border around the actions section */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for better separation */
+    display: flex;
+    flex-direction: column; /* Stack title and buttons vertically */
+    align-items: center; /* Center items horizontally */
+  }
+  
+  .actions-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 5px; /* Margin around each button */
+  }
+  
+  .btn-share {
+    background-color: #007bff;
+  }
+  
+  .btn-donate {
+    background-color: #28a745;
+  }
+  

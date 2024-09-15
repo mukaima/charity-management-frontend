@@ -1,0 +1,31 @@
+<header>
+  <div class="logo">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1vg1F6D8S-eRQidsImQb6SxF3QGXLTj98Vg&s" alt="Man7 Logo">
+  </div>
+  
+  <div class="search-bar-container">
+    <div class="search-bar">
+      <input type="text" placeholder="Search cases" />
+      <button>Search</button>
+    </div>
+  </div>
+  
+  <nav>
+    <ul>
+      <li><a href="#">How It Works</a></li>
+      <li><a href="#">Explore Cases</a></li>
+    </ul>
+  </nav>
+
+  <div class="user-section">
+    <ng-container *ngIf="isAuthenticated; else notAuthenticated">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="User Icon" class="user-icon">
+      <a [routerLink]="['/me']" class="username">{{ username }}</a>
+      <button (click)="logout()" class="logout-btn">Logout</button>
+    </ng-container>
+    
+    <ng-template #notAuthenticated>
+      <a routerLink="/auth">Sign Up / Login</a>
+    </ng-template>
+  </div>
+</header>

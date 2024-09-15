@@ -1,0 +1,33 @@
+<app-header></app-header>
+<div class="container-profile">
+  <!-- User Information Section -->
+  <div class="profile-header">
+    <h2>{{ user.username }}'s Profile</h2>
+    <button class="settings-btn" (click)="editProfile()">Settings</button>
+  </div>
+
+  <!-- User Cases Section -->
+  <div class="profile-section">
+    <h3>Your Cases</h3>
+    <div class="case-list" *ngFor="let userCase of userCases">
+      <div class="case-item">
+        <h4>{{ userCase.title }}</h4>
+        <p>{{ userCase.description }}</p>
+        <button class="manage-btn" (click)="manageCase(userCase)">Manage</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Donations Section -->
+  <div class="profile-section">
+    <h3>Your Donations</h3>
+    <div class="donation-list" *ngFor="let donation of userDonations">
+      <div class="donation-item">
+        <p>You donated <span class="donation-amount">{{ donation.amount }}</span> to case 
+          <span class="case-title">{{ caseTitles[donation.caseId] }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  
+

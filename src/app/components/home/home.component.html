@@ -1,0 +1,28 @@
+<app-header></app-header>
+<div class="hero">
+  <div class="hero-content" style="color: rgb(57, 57, 119);">
+    <h1>Man7 charity</h1>
+    <p>Raise money for what matters most.</p>
+    <button (click)="onCreateCase()">Create Case</button>
+  </div>
+</div>
+
+<div class="case-list">
+  <h2>Top Cases</h2>
+  <div class="cases-grid">
+    <div 
+      class="case"
+      *ngFor="let caseItem of cases"
+      (click)="goToCaseDetails(caseItem.id)">
+      <img [src]="caseItem.imagePath" alt="{{caseItem.title}}">
+      <h3>{{caseItem.title}}</h3>
+      <p>{{caseItem.description}}</p>
+      <button>Donate Now</button>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <p>&copy; 2024 GoFundMe, Inc.</p>
+</footer>

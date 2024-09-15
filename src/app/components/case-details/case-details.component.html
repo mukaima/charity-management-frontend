@@ -1,0 +1,21 @@
+<app-header></app-header>
+<div class="case-details-container">
+    <div class="case-content">
+      <div class="case-photo">
+        <img [src]="case.imagePath" alt="{{ case.title }}">
+      </div>
+      <div class="case-details">
+        <h1 class="case-title">{{ case.title }}</h1>
+        <p class="case-description">{{ case.description }}</p>
+        <p class="case-goal">Goal: {{ case.goal | currency }}</p>
+        <p class="case-amount-raised">Amount Raised: {{ case.amountRaised | currency }}</p>
+      </div>
+    </div>
+  
+    <div class="case-actions">
+      <h2 class="actions-title">Options</h2>
+      <button class="btn btn-share" (click)="shareCase()">Share</button>
+      <button class="btn btn-donate" (click)="donateToCase(case.id)">Donate</button>
+    </div>
+  </div>
+  

@@ -1,0 +1,177 @@
+<app-header></app-header>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <!-- Toggle between Sign In and Sign Up -->
+      <form *ngIf="isLoginMode; else signupForm" (ngSubmit)="loginForm.valid && validateUser(loginForm)" class="login100-form validate-form p-l-55 p-r-55 p-t-140" #loginForm="ngForm">
+        <span class="login100-form-title">
+          Sign In
+        </span>
+
+        <div class="form-group">
+          <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter email">
+            <input class="input100" type="email" name="email" id="email" placeholder="Email" required
+              pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="loginReq.username" #email="ngModel">
+            <span class="focus-input100"></span>
+          </div>
+          <span class="text-danger" *ngIf="(email.touched || loginForm.submitted) && email.errors?.['required']">
+            Error: Email is required!
+          </span>
+          <span class="text-danger" *ngIf="(email.touched || loginForm.submitted) && email.errors?.['pattern']">
+            Error: Please provide a valid email address!
+          </span>
+        </div>
+
+        <div class="form-group">
+          <div class="wrap-input100 validate-input" data-validate="Please enter password">
+            <input class="input100" type="password" name="password" placeholder="Password" id="password" required
+              [(ngModel)]="loginReq.password" #password="ngModel" minlength="5">
+            <span class="focus-input100"></span>
+          </div>
+          <span class="text-danger" *ngIf="(password.touched || loginForm.submitted) && password.errors?.['required']">
+            Error: Password is required!
+          </span>
+          <span class="text-danger" *ngIf="(password.touched || loginForm.submitted) && password.errors?.['minlength']">
+            Error: Password must be at least 5 characters long!
+          </span>
+        </div>
+
+        <div class="text-right p-t-13 p-b-23">
+          <span class="txt1">
+            Forgot
+          </span>
+          <a href="#" class="txt2">Password?</a>
+        </div>
+
+        <div class="container-login100-form-btn">
+          <button class="login100-form-btn" type="submit">Sign in</button>
+        </div>
+
+        <div class="flex-col-c p-t-40 p-b-20">
+          <span class="txt1 p-b-9">Don’t have an account?</span>
+          <a class="txt3" (click)="toggleForm()">Sign up now</a>
+        </div>
+      </form>
+
+      <!-- Sign Up Form -->
+      <ng-template #signupForm>
+        <form (ngSubmit)="signupForm.valid && registerUser(signupForm)" class="login100-form validate-form p-l-55 p-r-55 p-t-140" #signupForm="ngForm">
+          <span class="login100-form-title">Sign Up</span>
+
+          <div class="form-group">
+            <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+              <input class="input100" type="text" name="username" id="username" placeholder="Username" required
+                [(ngModel)]="user.username" (ngModelChange)="checkUsername()" #username="ngModel">
+              <span class="focus-input100"></span>
+            </div>
+            <span class="text-danger" *ngIf="(username.touched || signupForm.submitted) && username.errors?.['required']">
+              Error: Username is required!
+            </span>
+            <span class="text-danger" *ngIf="usernameTaken">
+              Error: Username is already taken!
+            </span>
+          </div>
+          
+
+          <div class="form-group">
+            <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter email">
+              <input class="input100" type="email" name="email" id="email" placeholder="Email" required
+                pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="user.email" #email="ngModel">
+              <span class="focus-input100"></span>
+            </div>
+            <span class="text-danger" *ngIf="(email.touched || signupForm.submitted) && email.errors?.['required']">
+              Error: Email is required!
+            </span>
+            <span class="text-danger" *ngIf="(email.touched || signupForm.submitted) && email.errors?.['pattern']">
+              Error: Please provide a valid email address!
+            </span>
+          </div>
+
+          <div class="form-group">
+            <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter first name">
+              <input class="input100" type="text" name="firstName" id="firstName" placeholder="First Name" required
+                [(ngModel)]="user.firstName" #firstName="ngModel">
+              <span class="focus-input100"></span>
+            </div>
+            <span class="text-danger" *ngIf="(firstName.touched || signupForm.submitted) && firstName.errors?.['required']">
+              Error: First Name is required!
+            </span>
+          </div>
+
+          <div class="form-group">
+            <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter last name">
+              <input class="input100" type="text" name="lastName" id="lastName" placeholder="Last Name" required
+                [(ngModel)]="user.lastName" #lastName="ngModel">
+              <span class="focus-input100"></span>
+            </div>
+            <span class="text-danger" *ngIf="(lastName.touched || signupForm.submitted) && lastName.errors?.['required']">
+              Error: Last Name is required!
+            </span>
+          </div>
+
+          <div class="form-group">
+            <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter your country">
+              <input class="input100" type="text" name="country" id="country" placeholder="country" required
+                [(ngModel)]="user.country" #country="ngModel">
+              <span class="focus-input100"></span>
+            </div>
+            <span class="text-danger" *ngIf="(country.touched || signupForm.submitted) && country.errors?.['required']">
+              Error: country is required!
+            </span>
+          </div>
+
+          <div class="form-group">
+            <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter Zip code">
+              <input class="input100" type="text" name="zipcode" id="zipcode" placeholder="zipcode" required
+                [(ngModel)]="user.zipCode" #zipcode="ngModel">
+              <span class="focus-input100"></span>
+            </div>
+            <span class="text-danger" *ngIf="(zipcode.touched || signupForm.submitted) && zipcode.errors?.['required']">
+              Error: zip code is required!
+            </span>
+          </div>
+
+          <!-- Add more fields as needed like country, zip code, etc. -->
+
+          <div class="form-group">
+            <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter password">
+              <input class="input100" type="password" name="password" id="password" placeholder="Password" required
+                [(ngModel)]="user.passwordHash" #password="ngModel" minlength="5">
+              <span class="focus-input100"></span>
+            </div>
+            <span class="text-danger" *ngIf="(password.touched || signupForm.submitted) && password.errors?.['required']">
+              Error: Password is required!
+            </span>
+            <span class="text-danger" *ngIf="(password.touched || signupForm.submitted) && password.errors?.['minlength']">
+              Error: Password must be at least 5 characters long!
+            </span>
+          </div>
+
+          <!-- Repeat Password Input -->
+          <div class="form-group">
+            <div class="wrap-input100 validate-input m-b-16" data-validate="Please repeat password">
+              <input class="input100" type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat Password" required
+                [(ngModel)]="repeatPassword" #repeatPasswordModel="ngModel" minlength="5">
+              <span class="focus-input100"></span>
+            </div>
+            <span class="text-danger" *ngIf="(repeatPasswordModel.touched || signupForm.submitted) && repeatPasswordModel.errors?.['required']">
+              Error: Please repeat the password!
+            </span>
+            <span class="text-danger" *ngIf="repeatPassword && user.passwordHash && repeatPassword !== user.passwordHash">
+              Error: Passwords do not match!
+            </span>
+          </div>
+
+          <div class="container-login100-form-btn">
+            <button class="login100-form-btn" type="submit">Sign Up</button>
+          </div>
+
+          <div class="flex-col-c p-t-40 p-b-20">
+            <span class="txt1 p-b-9">Already have an account?</span>
+            <a class="txt3" (click)="toggleForm()">Sign in now</a>
+          </div>
+        </form>
+      </ng-template>
+    </div>
+  </div>
+</div>

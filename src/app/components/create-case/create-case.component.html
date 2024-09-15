@@ -1,0 +1,80 @@
+<app-header></app-header>
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <form (ngSubmit)="onSubmit(createCaseForm)" class="login100-form validate-form p-l-55 p-r-55 p-t-140" #createCaseForm="ngForm">
+
+        <span class="login100-form-title">
+          Create New Case
+        </span>
+
+        <!-- Case Title -->
+        <div class="form-group">
+          <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter a title">
+            <input class="input100" type="text" name="title" id="title" placeholder="Case Title" required
+              [(ngModel)]="case.title" #title="ngModel">
+            <span class="focus-input100"></span>
+          </div>
+          <span class="text-danger" *ngIf="(title.touched || createCaseForm.submitted) && title.errors?.['required']">
+            Error: Title is required!
+          </span>
+        </div>
+
+        <!-- Case Description -->
+        <div class="form-group">
+          <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter a description">
+            <textarea class="input100" name="description" id="description" placeholder="Case Description" required
+              [(ngModel)]="case.description" #description="ngModel"></textarea>
+            <span class="focus-input100"></span>
+          </div>
+          <span class="text-danger" *ngIf="(description.touched || createCaseForm.submitted) && description.errors?.['required']">
+            Error: Description is required!
+          </span>
+        </div>
+
+        <!-- Case Category -->
+        <div class="form-group">
+          <div class="wrap-input100 validate-input m-b-16" data-validate="Please select a category">
+            <select class="input100" name="categoryName" id="categoryName" required [(ngModel)]="categoryName" #category="ngModel">
+              <option value="" disabled selected>Select Category</option>
+              <option *ngFor="let cat of categories" [value]="cat.name">{{cat.name}}</option>
+            </select>
+            <span class="focus-input100"></span>
+          </div>
+          <span class="text-danger" *ngIf="(category.touched || createCaseForm.submitted) && category.errors?.['required']">
+            Error: Category is required!
+          </span>
+        </div>
+        
+
+        <!-- Case Goal -->
+        <div class="form-group">
+          <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter a goal amount">
+            <input class="input100" type="number" name="goal" id="goal" placeholder="Goal Amount" required
+              [(ngModel)]="case.goal" #goal="ngModel">
+            <span class="focus-input100"></span>
+          </div>
+          <span class="text-danger" *ngIf="(goal.touched || createCaseForm.submitted) && goal.errors?.['required']">
+            Error: Goal amount is required!
+          </span>
+        </div>
+
+        <!-- Case Image -->
+        <div class="form-group">
+          <div class="wrap-input100 validate-input m-b-16">
+            <input class="input100" type="file" name="image" id="image" (change)="onFileSelect($event)" accept="image/*" #imageControl="ngModel" ngModel required>
+            <span class="focus-input100"></span>
+          </div>
+          <span class="text-danger" *ngIf="(imageControl.touched || createCaseForm.submitted) && !selectedFile">
+            Error: Image is required!
+          </span>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="container-login100-form-btn">
+          <button class="login100-form-btn" type="submit">Create Case</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

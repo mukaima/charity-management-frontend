@@ -1,0 +1,103 @@
+.container-profile {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-header h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .settings-btn {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .settings-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .profile-section {
+    margin-bottom: 30px;
+  }
+  
+  .case-list, .donation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .case-item, .donation-item {
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .case-item h4 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .manage-btn {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .manage-btn:hover {
+    background-color: #218838;
+  }
+  .profile-section {
+    margin: 20px;
+  }
+  
+  h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #4a4a4a;
+  }
+  
+  .donation-list {
+    margin-bottom: 15px;
+  }
+  
+  .donation-item {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .donation-amount {
+    font-weight: bold;
+    color: #2b8a3e;
+  }
+  
+  .case-title {
+    font-weight: bold;
+    font-size: 18px;
+    color: #0056b3;
+    text-decoration: underline;
+  }
+  
+  .case-title:hover {
+    color: #003f8a;
+  }
+    
